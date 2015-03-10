@@ -7,7 +7,10 @@ namespace CMS\Controller;
  */
 
 class HomeController extends \Arch\Controller{
-    public function indexAction(){
+    public function indexAction($request){
  		return $this->render('Default/home.html.twig');
+    }
+    public function helloAction($request){
+ 		return $this->render('Default/hello.html.twig', array('name' => $request->get('name')));
     }
 }
