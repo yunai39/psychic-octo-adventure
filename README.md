@@ -1,2 +1,2 @@
-# psychic-octo-adventure
+# Psychic Octo Adventure
 Bientôt
