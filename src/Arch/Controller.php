@@ -71,6 +71,7 @@ class Controller{
 	*
 	*
 	* @param        Arch\Session    $session    The session
+        * @return       Arch\Controller 
 	* @access       public
 	* @author       Marine BENOIT
 	*/
@@ -84,11 +85,13 @@ class Controller{
 	*
 	*
 	* @param        Arch\Routing\UrlGenerator    $urlGenerator    Url generator
+        * @return       Arch\Controller 
 	* @access       public
 	* @author       Marine BENOIT
 	*/
 	public function setUrlGenerator($urlGenerator){
-		$this->urlGenerator = $urlGenerator;	
+		$this->urlGenerator = $urlGenerator;
+                return $this;
 	}
 
 	public function setConfiguration($configuration){
@@ -124,7 +127,10 @@ class Controller{
 	public function redirect($action, $arg = null){
 		header('Location: '.$this->urlGenerator->getUrl($action , $arg));  
 	}
-	
+	/**
+         * 
+         * @return boolean
+         */
 	public function getUser(){
 		if($this->session->has('user')){
 			return unserialize($this->session->get('user'));
@@ -132,12 +138,33 @@ class Controller{
 		else return false;
 	}
 	
+        /**
+         * 
+         * @return type
+         */
 	public function getDirectoryRoot(){
 		
 		return __DIR__.'/../../';
 	}
 	
+        /**
+         * 
+         * @param type $databaseName
+         * @return Arch\Connect\DatabaseManager
+         */
 	public function getDatabaseManager($databaseName = 'default'){
-		return NULL;
+		if(isset($this->databaseManagers[$databaseName])){
+			return $this->databaseManagers[$databaseName];
+		}
+		else{
+                    include($this->getDirectoryRoot().'/config/databaseInfo.php');
+                    if(isset($databaseInfo[$databaseName])){
+                            $managerName = "Arch\Connect\DatabaseManager".$databaseInfo[$databaseName]['type'];
+                            $this->databaseManagers[$databaseName] = new $managerName($databaseInfo);
+                            return $this->databaseManagers[$databaseName];
+                    }else{
+                            return NULL;
+                    }
+		}
 	}
 }

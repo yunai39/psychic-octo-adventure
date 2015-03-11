@@ -6,9 +6,16 @@ namespace CMS\Controller;
  * and open the template in the editor.
  */
 
+use CMS\Model\Membre;
+
 class HomeController extends \Arch\Controller{
     public function indexAction($request){
- 		return $this->render('Default/home.html.twig');
+        $db = $this->getDatabaseManager();
+        $newMembre = new Membre();
+        $newMembre->setLogin('a')->setNom('lola')->setPrenom('zaza');
+        $db->add($newMembre);
+        $membres = $db->getFinder('CMS\Model\Membre')->getAll();
+        return $this->render('Default/home.html.twig', array('membres' => $membres));
     }
     public function helloAction($request){
  		return $this->render('Default/hello.html.twig', array('name' => $request->get('name')));
