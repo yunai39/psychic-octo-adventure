@@ -1,11 +1,28 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        
-    </head>
-    <body>
+	<head>
+		<title>CMSModule |</title>
+		<link rel="stylesheet/less" type="text/css" href="Styles/styles.less" />
+		<script src="Scripts/less.js"></script>
+		<script src="Scripts/jquery.js"></script>
+		<meta charset="utf-8">
+	</head>
+
+	<body>
+		
+		<div class="content">
+
         {% block body %}
         {% endblock %}
-    </body>
+
+		</div>
+		
+		{% block scripts %}
+        {% endblock %}
+
+		<script src="Scripts/lightbox.js"></script>
+
+	</body>
+
 </html>

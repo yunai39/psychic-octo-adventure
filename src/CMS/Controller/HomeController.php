@@ -20,4 +20,7 @@ class HomeController extends \Arch\Controller{
     public function helloAction($request){
  		return $this->render('Default/hello.html.twig', array('name' => $request->get('name')));
     }
+    public function loginAction($request){
+ 		return $this->render('Users/login.html.twig', array('name' => $request->get('name')));
+    }
 }
