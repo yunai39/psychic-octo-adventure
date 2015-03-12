@@ -2,7 +2,7 @@
 namespace Arch;
 
 use Twig_Environment;
-use Twig_Loader_Filesystem;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
  * Controller
@@ -125,7 +125,8 @@ class Controller{
 	* @author       Marine BENOIT
 	*/
 	public function redirect($action, $arg = null){
-		header('Location: '.$this->urlGenerator->getUrl($action , $arg));  
+                return new RedirectResponse($this->urlGenerator->getUrl($action , $arg));
+		//header('Location: '.$this->urlGenerator->getUrl($action , $arg));  
 	}
 	/**
          * 

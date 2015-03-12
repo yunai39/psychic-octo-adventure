@@ -107,6 +107,31 @@ class Framework
         
         try {
                     $route = $this->matcher->getArg($request);
+                    if($route['neededRole'] != 'NO_ROLE'){
+				if($this->session->has('user') == false){
+					if(!$this->session->has('refUrl')){
+						$this->session->set('refUrl' ,$request->getUri());
+					}
+					header('Location: '.$this->generator->getUrl('login'));  
+					exit(); 
+				}
+				else{
+					$user = $this->session->getUser();
+					if($user){
+						if(!$user->hasRole($route['neededRole'])){
+							if(!$this->session->has('refUrl')){
+								$this->session->set('refUrl' ,$request->getUri());
+							}
+							header('Location: '.$this->generator->getUrl('login'));   
+							exit(); 
+						}
+					}else{
+						$this->session->getFlashBag()->add('login_error','noUser');
+						header('Location: '.$this->generator->getUrl('login'));   
+						exit(); 
+					}
+				}
+			}
                     $request->attributes->add($route);
                     $info = explode('::',$route['_controller']);
                     

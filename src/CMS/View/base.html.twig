@@ -12,7 +12,11 @@
 	<body>
 		
 		<div class="content">
-
+                {% if session.hasUser() %}
+                        <li><a href="{{urlgenerator('logout')}}">Logout</a></li>
+                {% else %}
+                        <li><a href="{{urlgenerator('login')}}">Login</a></li>
+                {% endif %}
         {% block body %}
         {% endblock %}
 

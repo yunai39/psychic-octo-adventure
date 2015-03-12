@@ -14,7 +14,7 @@ class HomeController extends \Arch\Controller{
         $newMembre = new Membre();
         $newMembre->setLogin('a')->setNom('lola')->setPrenom('zaza');
         $db->add($newMembre);
-        $membres = $db->getFinder('CMS\Model\Membre')->getAll();
+        $membres = $db->getFinder('CMS\Model\User')->getAll();
         return $this->render('Default/home.html.twig', array('membres' => $membres));
     }
     public function helloAction($request){

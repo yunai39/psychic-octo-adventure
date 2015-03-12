@@ -13,5 +13,6 @@ $routes = new Routing\RouteCollection();
 $routes->add('home', new Routing\Route(  'CMS\\Controller\\HomeController::indexAction'));
 $routes->add('hello', new Routing\Route(  'CMS\\Controller\\HomeController::helloAction'));
 $routes->add('login', new Routing\Route(  'CMS\\Controller\\HomeController::loginAction'));
-
+$routes->add('logout', new Routing\Route(  'Arch\\Security\\Controller\\SecurityController::logoutAction'));
+$routes->add('log_check', new Routing\Route(  'Arch\\Security\\Controller\\SecurityController::logCheckAction'));
 return $routes;
