@@ -125,8 +125,9 @@ class Controller{
 	* @author       Marine BENOIT
 	*/
 	public function redirect($action, $arg = null){
-                return new RedirectResponse($this->urlGenerator->getUrl($action , $arg));
-		//header('Location: '.$this->urlGenerator->getUrl($action , $arg));  
+                
+		header('Location: '.$this->urlGenerator->getUrl($action , $arg));  
+                exit();
 	}
 	/**
          * 
