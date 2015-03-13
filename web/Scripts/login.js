@@ -1,56 +1,66 @@
 
-var form, elements, formManager;
+(function() {
 
-form 	  = document.querySelector('#login');
-elements  = [document.querySelector('#username'), document.querySelector('#password')];
-elemBool  = [false, false];
+	var form, formContent, formManager;
 
-formManager = create_FormManager();
+	form = document.querySelector('#login');
 
-form.addEventListener('submit', function(e) {
+	formContent = {
+		username : {elem : document.querySelector('#username'), bool : false},
+		password : {elem : document.querySelector('#password'), bool : false}
+	};
 
-	e.preventDefault();
-	
-	var this_, errorText, account;
+	formManager = create_FormManager();
 
-	this_ = this;
+	form.addEventListener('submit', function(e) {
 
-	for (i = 0; i < elements.length; i++) {
+		e.preventDefault();
+		
+		var this_, prop, element, errorText, account;
 
-		errorText = elements[i].nextElementSibling;
+		this_ = this;
 
-		if ( formManager.checkEmpty(elements[i]) ) {
+		for ( prop in formContent ) {
 
-			errorText.innerHTML = 'Champ vide';
+			element   = formContent[prop];
+			errorText = element['elem'].nextElementSibling;
+
+			if ( formManager.checkEmpty(element.elem) ) {
+
+				errorText.innerHTML = 'Champ vide';
+			} else {
+
+				errorText.innerHTML = '';
+				element.bool = true;
+
+				if ( formContent.username.bool && formContent.password.bool/* && account*/ ) {
+
+					this_.submit();
+				}
+			}
+		}
+
+		/*
+
+		errorText = formContent.username.elem.nextElementSibling;
+
+		if ( formManager.checkAccount(formContent.username.elem, formContent.password.elem, 'index.php?page=log_check') ) {
+
+			if ( formContent.username.bool && formContent.password.bool ) {
+
+				errorText.innerHTML = 'Mauvaise combinaison';
+			}
 		} else {
 
 			errorText.innerHTML = '';
-			elemBool[i] = true;
+			account = true;
 
-			if ( elemBool[0] && elemBool[1] ) {
+			if ( formContent.username.bool && formContent.password.bool ) {
 
 				this_.submit();
 			}
 		}
-	}
 
-	/* Il n'y a pas encore de page pour vérifier le compte, donc je met en commentaire pour le moment.
-
-	errorText = elements[0].nextElementSibling;
-
-	if ( formManager.checkAccount(elements[0], elements[1], 'page_qui_vérifie_le_compte') ) {
-
-		errorText.innerHTML = 'Mauvaise combinaison';
-	} else {
-
-		errorText.innerHTML = '';
-		account = true;
-
-		if ( elemBool[0] && elemBool[1] ) {
-
-			this_.submit();
-		}
-	}
-
-	*/
-}, false);
+		*/
+	}, false);
+}());
