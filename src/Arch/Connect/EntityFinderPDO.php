@@ -20,7 +20,12 @@ class EntityFinderPDO extends EntityFinder{
 			return false;
 		}
 		$data = $request->fetch(\PDO::FETCH_ASSOC);
-		return new $this->entityClass($data);
+                if($data){
+                    return new $this->entityClass($data);
+                }
+                else{
+                    return false;
+                }
 	}
 	
 	public function getBy(array $array){

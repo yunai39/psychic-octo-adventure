@@ -142,7 +142,7 @@ class Framework
                     $controller->seturlGenerator($this->generator);
                     $controller->setSession($this->session);
                     $controller->setConfiguration($this->configuration);
-                    return new Response($controller->$info[1]($request));
+                    return new Response($controller->$info[1]($request,$route['arg']));
         } 
         catch (\Exception $e) {
         	$template = $this->twig->loadTemplate('Error.html.twig');

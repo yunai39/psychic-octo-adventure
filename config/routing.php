@@ -16,5 +16,6 @@ $routes->add('login', new Routing\Route(  'CMS\\Controller\\HomeController::logi
 $routes->add('logout', new Routing\Route(  'Arch\\Security\\Controller\\SecurityController::logoutAction'));
 $routes->add('log_check', new Routing\Route(  'Arch\\Security\\Controller\\SecurityController::logCheckAction'));
 
-$routes->add('info_user', new Routing\Route(  'CMS\\Controller\\UserController::infoAction','ROLE_USER'));
+$routes->add('info_user_current', new Routing\Route(  'CMS\\Controller\\UserController::infoUserCurrentAction','ROLE_USER'));
+$routes->add('info_user', new Routing\Route(  'CMS\\Controller\\UserController::infoUserAction','ROLE_USER', array('id')));
 return $routes;

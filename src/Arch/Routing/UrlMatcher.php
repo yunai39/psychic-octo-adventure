@@ -50,15 +50,19 @@ class UrlMatcher{
 			$return = array();
 			$return['_controller'] = $route->getController();
 			if(count($argumentTab) != 0){
+                                $arg = array();
 				foreach($argumentTab as $key => $value){
-					$return[$key] = $request->get($key);
+					$arg[$value] = $request->get($value);
 				}
-			}
+                            $return['arg'] = $arg;
+			}else{
+                            $return['arg'] = null;
+                        }
 			$return['neededRole'] = $route->neededRole();
 			return $return;
 		}
 		else{
-			throw new \Exception();
+			throw new \Exception('No route found');
 			
 		}
 	}
