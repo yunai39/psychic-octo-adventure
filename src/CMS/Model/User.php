@@ -2,7 +2,8 @@
 namespace CMS\Model;
 use Arch\Connect\Entity;
 use Arch\Security\User\UserInterface;
-class User extends Entity implements UserInterface{
+use Arch\Connect\ImgInterface;
+class User extends Entity implements UserInterface, ImgInterface{
 	
 	protected $id;	
 	protected $password;
@@ -11,6 +12,9 @@ class User extends Entity implements UserInterface{
 	protected $username;
 	protected $firstName;
 	protected $lastName;
+        protected $email;
+        protected $lastConnect;
+	protected $pathImg;
 	public function getId(){
 		return $this->id;
 	}
@@ -76,6 +80,16 @@ class User extends Entity implements UserInterface{
 	public function getEmail(){
 		return $this->email;
 	}
+        
+        
+	public function setlastConnect($lastConnect){
+		$this->lastConnect = $lastConnect;
+		return $this;
+	}
+	
+	public function getLastConnect(){
+		return $this->lastConnect;
+	}
 	public function setRoles($roles){
 		$this->roles = $roles;
 		return $this;
@@ -114,5 +128,31 @@ class User extends Entity implements UserInterface{
     public static function getTableName() {
         return 'User';
     }
+    
+    public function setPathImg($pathImg){
+		$this->pathImg = $pathImg;
+		return $this;
+	}
+	public function getPathImg(){
+		return $this->pathImg;
+	}
+	public function upload($file){
+		if($file == null){
+			return false;
+		}
+                $folderUpload = md5($file["name"]);
+                mkdir($this->getUploadFolder().$folderUpload);
+		move_uploaded_file($file["tmp_name"],$this->getUploadFolder().$folderUpload);
+                $this->pathImg = $folderUpload.'/'.$file["name"];
+		return true;
+	}
+        
+        public function getUploadFolder(){
+            return 'upload/';
+        }
+        
+        public function getWebPathImg(){
+            return $this->getUploadFolder().$this->pathImg;
+        }
 	 
 }

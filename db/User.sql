@@ -6,7 +6,9 @@ CREATE TABLE `User` (
   `username` varchar(30) NOT NULL,
   `firstName` varchar(30) NOT NULL,
   `lastName` varchar(30) NOT NULL,
-  `email` varchar(30) NOT NULL
+  `email` varchar(30) NOT NULL,
+  `lastConnect` dateTime,
+  `pathImg` varchar(50) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;# MySQL a retourné un résultat vide (aucune ligne).
 
 

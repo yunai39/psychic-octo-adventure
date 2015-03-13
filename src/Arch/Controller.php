@@ -169,4 +169,8 @@ class Controller{
                     }
 		}
 	}
+        
+        public function getSession(){
+            return $this->session;
+        }
 }

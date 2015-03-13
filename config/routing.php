@@ -15,4 +15,6 @@ $routes->add('hello', new Routing\Route(  'CMS\\Controller\\HomeController::hell
 $routes->add('login', new Routing\Route(  'CMS\\Controller\\HomeController::loginAction'));
 $routes->add('logout', new Routing\Route(  'Arch\\Security\\Controller\\SecurityController::logoutAction'));
 $routes->add('log_check', new Routing\Route(  'Arch\\Security\\Controller\\SecurityController::logCheckAction'));
+
+$routes->add('info_user', new Routing\Route(  'CMS\\Controller\\UserController::infoAction','ROLE_USER'));
 return $routes;
