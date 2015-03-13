@@ -3,9 +3,9 @@ CREATE TABLE `User` (
   `password` varchar(255) NOT NULL,
   `salt` varchar(255) NOT NULL,
   `roles` varchar(255) NOT NULL,
-  `username` varchar(30) NOT NULL,
-  `firstName` varchar(30) NOT NULL,
-  `lastName` varchar(30) NOT NULL,
+  `username` varchar(16) NOT NULL,
+  `firstName` varchar(16) NOT NULL,
+  `lastName` varchar(16) NOT NULL,
   `email` varchar(30) NOT NULL,
   `lastConnect` dateTime,
   `pathImg` varchar(50) NOT NULL

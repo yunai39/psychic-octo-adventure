@@ -2,6 +2,13 @@
 {% block body %}
 	
     <div>
+        {% if session.getFlashBag.has('error_register') %}
+            <ul>
+                {% for error in session.getFlashBag.get('error_register') %}
+                    <li><p>{{error}}</p></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
         <form action="{{urlgenerator('register_user_post')}}" method="POST" enctype="multipart/form-data" >
             <input type="text" name="username" id="username" placeholder="Username" /> </br>
             <input type="text" name="lastName" id="lastName" placeholder="Nom" /> </br>
