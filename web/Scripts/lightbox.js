@@ -6,6 +6,6 @@ function lightbox(id){
 	}else{
 		
 		$( lightbox ).data("open","close").fadeOut( 200 );	
-		$('body').css({'overflow': 'scroll', 'height': 'auto' });
+		$('body').css({'overflow': 'auto', 'height': 'auto' });
 	}
 }
