@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block body %}
- Oups, an error occured
+ Oups, un erreur est passé par là,
  <br />
-{{error.__toString()|raw}}
+{{error.getMessage()|raw}}
 {% endblock %}

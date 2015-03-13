@@ -9,7 +9,7 @@ namespace Arch\Connect;
 Interface ImgInterface{
         public function setPathImg($pathImg);
 	public function getPathImg();
-	public function upload($file);
+	public function upload(\Symfony\Component\HttpFoundation\File\UploadedFile $file);
         public function getUploadFolder();
         public function getWebPathImg();
 }

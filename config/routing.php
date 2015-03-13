@@ -18,4 +18,6 @@ $routes->add('log_check', new Routing\Route(  'Arch\\Security\\Controller\\Secur
 
 $routes->add('info_user_current', new Routing\Route(  'CMS\\Controller\\UserController::infoUserCurrentAction','ROLE_USER'));
 $routes->add('info_user', new Routing\Route(  'CMS\\Controller\\UserController::infoUserAction','ROLE_USER', array('id')));
+$routes->add('register_user', new Routing\Route( 'CMS\\Controller\\UserController::registerDisplayFormAction'));
+$routes->add('register_user_post', new Routing\Route( 'CMS\\Controller\\UserController::registerDisplayFormPostAction'));
 return $routes;

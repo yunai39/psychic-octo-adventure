@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	
+    <div>
+        <form action="{{urlgenerator('register_user_post')}}" method="POST" enctype="multipart/form-data" >
+            <input type="text" name="username" id="username" placeholder="Username" /> </br>
+            <input type="text" name="lastName" id="lastName" placeholder="Nom" /> </br>
+            <input type="text" name="firstName" id="firstName" placeholder="Prénom" /> </br>
+            <input type="email" name="email" id="email" placeholder="Email" /> </br>
+            <input type="file" name="img" id="img" placeholder="Image de profile" /> </br>
+            <input type="password" name="password_1" id="password_1" placeholder="Mot de passe" /> </br>
+            <input type="password" name="password_2" id="password_2" placeholder="Confirmation de mot de passe" /> </br>
+            <input type="submit" value="S'enregistrer" /> 
+        </form>
+    </div>
+
+{% endblock %}

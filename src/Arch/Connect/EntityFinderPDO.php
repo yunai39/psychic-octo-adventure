@@ -50,6 +50,9 @@ class EntityFinderPDO extends EntityFinder{
 		while($data = $request->fetch(\PDO::FETCH_ASSOC)){
 			$entities[] = new $this->entityClass($data);
 		}
+                if(count($entities) == 0){
+                    return false;
+                }
 		return $entities;
 	}
 	
@@ -64,6 +67,9 @@ class EntityFinderPDO extends EntityFinder{
 		while($data = $request->fetch(\PDO::FETCH_ASSOC)){
 			$entities[] = new $this->entityClass($data);
 		}
+                if(count($entities) == 0){
+                    return false;
+                }
 		return $entities;
 
 	}

@@ -136,14 +136,14 @@ class User extends Entity implements UserInterface, ImgInterface{
 	public function getPathImg(){
 		return $this->pathImg;
 	}
-	public function upload($file){
+	public function upload(\Symfony\Component\HttpFoundation\File\UploadedFile $file){
 		if($file == null){
 			return false;
 		}
-                $folderUpload = md5($file["name"]);
+                $folderUpload = md5($file->getClientOriginalName());
                 mkdir($this->getUploadFolder().$folderUpload);
-		move_uploaded_file($file["tmp_name"],$this->getUploadFolder().$folderUpload);
-                $this->pathImg = $folderUpload.'/'.$file["name"];
+		$file->move($this->getUploadFolder().$folderUpload, $file->getClientOriginalName());
+                $this->pathImg = $folderUpload.'/'.$file->getClientOriginalName();
 		return true;
 	}
         
