@@ -1,41 +1,52 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+	
+		<div class="signin">
 
-		<div class="login">
+			<div class="logo">
+				<i class="fa fa-skyatlas"></i>
+			</div>
+
+			<div class="login">
+				
+				<h1> Connexion </h1>
+
+				<form action="#" method="POST" id="login">
+					<label>
+						Nom d'utilisateur
+						<input type="text" name="username" id="username" placeholder="Login">
+						<div class="error"></div>
+					</label>
+					<label>
+						Mot de passe
+						<input type="password" name="password" id="password" placeholder="Password">
+						<div class="error"></div>
+					</label>
+					<div class="row">
+						<div class="forget"><a href="#" onclick="window.lightbox('forgetpassword')">Mot de passe oublié</a></div>
+						<input type="submit" name="" id="" class="button" value="connexion">
+					</div>
+				</form>
+
+			</div>
 			
-			<h1> Connexion </h1>
-
-			<form action="#" method="POST" id="login">
-				<label>
-					Nom d'utilisateur
-					<input type="text" name="username" id="username" placeholder="Login">
-					<div class="error"></div>
-				</label>
-				<label>
-					Mot de passe
-					<input type="password" name="password" id="password" placeholder="Password">
-					<div class="error"></div>
-				</label>
-				<div class="row">
-					<div class="forget"><a href="#" onclick="window.lightbox('forgetpassword')">Mot de passe oublié</a></div>
-					<input type="submit" name="" id="" class="button" value="connexion">
-				</div>
-			</form>
-
+			<div class="nologin">
+				Vous n'avez pas de compte?
+			</div>
 		</div>
-
+	
 		
 		<div class="popup" id="forgetpassword" data-open="close">
 			<div class="background" onclick="window.lightbox('forgetpassword')"></div>
 			<div class="content">
 				<div class="lightbox">
-					<div class="modal" style="width:auto;">
+					<div class="modal" style="width:300px;">
 						<h3>lightbox</h3><br>
 						<form action="#" method="POST" id="login">
 							<label>
 								Email de résiliation<br>
 								<input type="email" name="emial" id="email" placeholder="Email">
-								<!-- <div class="error">Invalid user</div> -->
+								<!-- <div class="error"></div> -->
 							</label>
 							<div class="row">
 								<input type="submit" name="" id="" class="button" value="connexion">
