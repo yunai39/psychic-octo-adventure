@@ -11,7 +11,7 @@
 	};
 
 	formManager = create_FormManager();
-
+	
 	form.addEventListener('submit', function(e) {
 
 		e.preventDefault();
@@ -62,5 +62,26 @@
 		}
 
 		*/
+	}, false);
+
+	form = document.querySelector('#forget');
+
+	form.addEventListener('submit', function(e) {
+
+		e.preventDefault();
+		
+		var element, errorText;
+
+		element   = document.querySelector('#email');
+		errorText = element.nextElementSibling;
+
+		if ( formManager.checkEmail(element) ) {
+
+			errorText.innerHTML = 'Saisissez une adresse email correcte';
+		} else {
+
+			errorText.innerHTML = '';
+			form.submit();
+		}
 	}, false);
 }());
