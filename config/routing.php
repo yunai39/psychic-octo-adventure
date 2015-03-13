@@ -12,5 +12,6 @@ $routes = new Routing\RouteCollection();
  */
 $routes->add('home', new Routing\Route(  'CMS\\Controller\\HomeController::indexAction'));
 $routes->add('hello', new Routing\Route(  'CMS\\Controller\\HomeController::helloAction'));
+$routes->add('login', new Routing\Route(  'CMS\\Controller\\HomeController::loginAction'));
 
 return $routes;
