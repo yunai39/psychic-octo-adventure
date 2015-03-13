@@ -1,5 +1,5 @@
 function lightbox(id){
-	var lightbox = document.getElementById(id);
+	var lightbox = $( '#'+id );
 	if( $( lightbox ).data("open") == "close" ) {
 		$( lightbox ).data("open","open").fadeIn( 200 );
 		$('body').css({'overflow': 'hidden', 'height': '100%' });
