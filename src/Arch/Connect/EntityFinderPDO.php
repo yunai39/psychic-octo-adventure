@@ -45,7 +45,6 @@ class EntityFinderPDO extends EntityFinder{
                 if($extra != NULL){
                     $sql .= ' '. $extra;
                 }
-                var_dump($sql);
 		$request = $this->db->prepare($sql, array(\PDO::ATTR_CURSOR => \PDO::CURSOR_FWDONLY));
 		$request->execute($array);
 		if(!$request){
