@@ -151,6 +151,7 @@ nav{
 a{
 	color: @bleu;
 }
+
 .button{
 	border: none;
 	background: @bleu;
@@ -162,19 +163,26 @@ a{
 		-webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px inset;
 	}
 }
-label{
+
+.field{
 	font-weight: 600;
-	color: rgb(80, 80, 80);
+
+	label{
+		color: rgb(80, 80, 80);
+	}
+
+	input{
+		margin-top: 10px;
+	}
+
 	.error{
 		margin-top: -7px;
 		margin-bottom: 15px;
 		color: @red;
 		text-align: right;
 	}
-	input{
-		margin-top: 10px;
-	}
 }
+
 input{
 	border-radius: 3px;
 	padding: 10px 15px;
@@ -184,7 +192,7 @@ input{
 	margin-bottom: 15px;
 	appearance: none;
 	outline: none;
-	&:focus{
+	&:not([type="submit"]):focus{
 		border-color: @bleu;
 		background: #FFF;
 		font-weight: 500;
