@@ -10,7 +10,7 @@
                 {% endfor %}
             </ul>
         {% endif %}
-        <form action="{{urlgenerator('register_user_post')}}" method="POST" enctype="multipart/form-data" >
+        <form action="{{urlgenerator('user_register_post')}}" method="POST" enctype="multipart/form-data" >
             <label>Votre nom d'utilisateur*
                 <input type="text" name="username" id="username" placeholder="Username" />
             </label>

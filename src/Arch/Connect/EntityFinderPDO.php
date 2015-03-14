@@ -28,7 +28,7 @@ class EntityFinderPDO extends EntityFinder{
                 }
 	}
 	
-	public function getBy(array $array){
+	public function getBy(array $array, $extra = NULL){
 		$tableName = call_user_func($this->entityClass.'::getTableName');
 		$sql = "SELECT * FROM ".$tableName;
 		$notFirst = false;
@@ -41,6 +41,11 @@ class EntityFinderPDO extends EntityFinder{
 			}
 			$sql .= " ".$key." = :".$key." ";  
 		}
+                
+                if($extra != NULL){
+                    $sql .= ' '. $extra;
+                }
+                var_dump($sql);
 		$request = $this->db->prepare($sql, array(\PDO::ATTR_CURSOR => \PDO::CURSOR_FWDONLY));
 		$request->execute($array);
 		if(!$request){

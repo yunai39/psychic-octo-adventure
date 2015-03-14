@@ -1,1 +1,4 @@
 config/databaseInfo.php
+web/upload/
+composer.lock
+nbproject/

@@ -1,0 +1,20 @@
+{# empty Twig template #}
+{% extends 'base_forum.html.twig' %}
+
+{% block forum %}
+    <div>
+        <ul>
+        {% for subForum in subForums %}
+            <li>
+                <a href="{{urlgenerator('sub_forum', {id: subForum.id})}}">{{subForum.nameForum}}</a>
+                <p>{{subForum.description}}</p>
+            </li>
+        {% endfor %}
+        
+        
+        {% for topic in topics %}
+            <li></li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

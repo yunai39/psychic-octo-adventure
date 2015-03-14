@@ -19,7 +19,7 @@ class EntityFinder{
             return NULL;
 	}
 	
-	public function getBy(array $array){
+	public function getBy(array $array, $extra = NULL){
             return NULL;
 	}
 	

@@ -125,6 +125,6 @@ class UserController extends \Arch\Controller {
             $db->add($user);
             return $this->redirect('home');
         }
-        return $this->redirect('register_user');
+        return $this->redirect('user_register');
     }
 }
