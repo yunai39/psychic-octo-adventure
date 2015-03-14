@@ -13,7 +13,7 @@
 
 				<form action="{{urlgenerator('log_check')}}" method="POST" id="login">
                                         {% if session.getFlashBag.has('login_error') %}
-                                            <p class="login_error">
+                                            <p class="login_error" id="error">
                                                {% for error in session.getFlashBag.get('login_error') %}
                                                    {{error}}
                                                {% endfor %}
@@ -66,6 +66,12 @@
 
 {% endblock %}
 {% block scripts %}
+		
+		<script>
+			jQuery(document).ready(function(){
+			$('#error').show(0).delay(2000).fadeOut(200).hide(200);
+			});
+		</script>
 
 		<script src="../Public/Scripts/connectionManager.js"></script>
 		<script src="../Public/Scripts/connection.js"></script>

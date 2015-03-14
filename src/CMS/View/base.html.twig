@@ -11,12 +11,18 @@
 
 	<body>
 		
+		<nav>
+			<ul>
+				{% if session.hasUser() %}
+	                <li class="login"><a href="{{urlgenerator('logout')}}"><i class="fa fa-lock"></i> Logout</a></li>
+	            {% else %}
+	                <li class="login"><a href="{{urlgenerator('login')}}"><i class="fa fa-user"></i> Login</a></li>
+	            {% endif %}
+            </ul>
+		</nav>
+
 		<div class="content">
-                {% if session.hasUser() %}
-                        <li><a href="{{urlgenerator('logout')}}">Logout</a></li>
-                {% else %}
-                        <li><a href="{{urlgenerator('login')}}">Login</a></li>
-                {% endif %}
+            
         {% block body %}
         {% endblock %}
 
@@ -24,7 +30,7 @@
 		
 		{% block scripts %}
         {% endblock %}
-
+		
 		<script src="Scripts/lightbox.js"></script>
 
 	</body>
