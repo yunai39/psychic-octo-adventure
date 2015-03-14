@@ -1,7 +1,8 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 	
-    <div>
+    <div class="signup">
+        <h1>Inscription</h1>
         {% if session.getFlashBag.has('error_register') %}
             <ul>
                 {% for error in session.getFlashBag.get('error_register') %}
@@ -10,14 +11,28 @@
             </ul>
         {% endif %}
         <form action="{{urlgenerator('register_user_post')}}" method="POST" enctype="multipart/form-data" >
-            <input type="text" name="username" id="username" placeholder="Username" /> </br>
-            <input type="text" name="lastName" id="lastName" placeholder="Nom" /> </br>
-            <input type="text" name="firstName" id="firstName" placeholder="Prénom" /> </br>
-            <input type="email" name="email" id="email" placeholder="Email" /> </br>
-            <input type="file" name="img" id="img" placeholder="Image de profile" /> </br>
-            <input type="password" name="password_1" id="password_1" placeholder="Mot de passe" /> </br>
-            <input type="password" name="password_2" id="password_2" placeholder="Confirmation de mot de passe" /> </br>
-            <input type="submit" value="S'enregistrer" /> 
+            <label>Votre nom d'utilisateur*
+                <input type="text" name="username" id="username" placeholder="Username" />
+            </label>
+            <label>Votre nom nom
+                <input type="text" name="lastName" id="lastName" placeholder="Nom" />
+            </label>
+            <label>Votre nom prénom
+                <input type="text" name="firstName" id="firstName" placeholder="Prénom" />
+            </label>
+            <label>Votre email*
+            <input type="email" name="email" id="email" placeholder="Email" />
+            </label>
+            <label>Votre profil
+                <input type="file" name="img" id="img" placeholder="Image de profile" />
+            </label>
+            <label>Sécurité
+                <input type="password" name="password_1" id="password_1" placeholder="Mot de passe" />
+            </label>
+            <input type="password" name="password_2" id="password_2" placeholder="Confirmation de mot de passe" />
+            <div class="row">
+                <input type="submit" class="button" value="S'enregistrer" /> 
+            </div>
         </form>
     </div>
 
