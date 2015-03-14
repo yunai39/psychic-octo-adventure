@@ -77,7 +77,7 @@
 
 		if ( formManager.checkEmail(element) ) {
 
-			errorText.innerHTML = 'Saisissez une adresse email correcte';
+			errorText.innerHTML = 'Email incorrecte';
 		} else {
 
 			errorText.innerHTML = '';
