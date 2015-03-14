@@ -19,16 +19,16 @@
                                                {% endfor %}
                                             </p>
                                         {% endif %}
-					<label>
-						Nom d'utilisateur
+					<div class="field">
+						<label for="username">Nom d'utilisateur</label>
 						<input type="text" name="username" id="username" placeholder="Login">
 						<div class="error"></div>
-					</label>
-					<label>
-						Mot de passe
+					</div>
+					<div class="field">
+						<label for="password">Mot de passe</label>
 						<input type="password" name="password" id="password" placeholder="Password">
 						<div class="error"></div>
-					</label>
+					</div>
 					<div class="row">
 						<div class="forget"><a href="#" onclick="window.lightbox('forgetpassword')">Mot de passe oublié</a></div>
 						<input type="submit" name="" id="" class="button" value="connexion">
@@ -50,11 +50,12 @@
 					<div class="modal" style="width:300px;">
 						<h3>Modification du mot de passe</h3><br>
 						<form action="#" method="POST" id="forget">
-							<label>
-								Email de résiliation<br>
+							<div class="field">
+								<label for="email">Email de résiliation</label>
 								<input type="text" name="email" id="email" placeholder="Email">
 								<div class="error"></div>
-							</label>
+							</div>
+							
 							<div class="row">
 								<input type="submit" name="" id="" class="button">
 							</div>
