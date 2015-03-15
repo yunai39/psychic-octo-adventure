@@ -104,8 +104,10 @@ body{
 }
 
 .signup:extend(.box){
-	max-width: 300px;
+	max-width: 400px;
+	height: 450px;
 	margin: 0 auto;
+
 	h1:extend(.title){
 		background: @bleu;
 		color: #FFF;
@@ -118,16 +120,80 @@ body{
 		text-transform: uppercase;
 		border-bottom: 2px solid rgba(0,0,0,0.1);
 	}
+
+	form{
+		overflow: hidden;
+		width: 400px;
+		height: 405px;
+
+		.step{
+			width: 350px;
+			margin: auto;
+			margin-bottom: 20px;
+
+			.circle{
+			    width: 50px;
+			    height: 50px;
+			    border-radius: 50px;
+			    background: gainsboro;
+			    display: inline-block;
+			    vertical-align: top;
+			    text-align: center;
+
+			    i{
+			    	color: white;
+			    	font-size: 25px;
+			    	line-height: 50px;
+			    }
+
+			    &:nth-child(1){
+			    	background: #2895f1;
+			    }
+			}
+
+			.line{
+			    width: 100px;
+			    height: 2px;
+			    margin-top: 24px;
+			    background: gainsboro;
+			    display: inline-block;
+			}
+		}
+
+		.content_form{
+			width: 1200px;
+
+			.bloc_register{
+				width: 400px;
+				height: 300px;
+				display: inline-block;
+				vertical-align: top;
+			}
+
+			.first p{
+				color: @red;
+			}
+		}
+
+		.footer_form{
+			width: 100%;
+			height: 35px;
+
+			a:nth-child(1){
+				float: left;
+			}
+
+			a:nth-child(2){
+				float: right;
+			}
+		}
+	}
+
 	input{
-		width:convert(100%, px) - 11px;
+		width:convert(100%, px) - 8px;
 		&.button{
 			width: auto;
 			float: right;
-		}
-	}
-	label{
-		.error{
-				
 		}
 	}
 }
