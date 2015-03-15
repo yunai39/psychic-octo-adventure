@@ -11,27 +11,60 @@
             </ul>
         {% endif %}
         <form action="{{urlgenerator('user_register_post')}}" method="POST" enctype="multipart/form-data" >
-            <label>Votre nom d'utilisateur*
-                <input type="text" name="username" id="username" placeholder="Username" />
-            </label>
-            <label>Votre nom nom
-                <input type="text" name="lastName" id="lastName" placeholder="Nom" />
-            </label>
-            <label>Votre nom prénom
-                <input type="text" name="firstName" id="firstName" placeholder="Prénom" />
-            </label>
-            <label>Votre email*
-            <input type="email" name="email" id="email" placeholder="Email" />
-            </label>
-            <label>Votre profil
-                <input type="file" name="img" id="img" placeholder="Image de profile" />
-            </label>
-            <label>Sécurité
-                <input type="password" name="password_1" id="password_1" placeholder="Mot de passe" />
-            </label>
-            <input type="password" name="password_2" id="password_2" placeholder="Confirmation de mot de passe" />
-            <div class="row">
-                <input type="submit" class="button" value="S'enregistrer" /> 
+
+            <div class="step">
+                <div class="circle"><i class="fa fa-unlock-alt"></i></div><!--
+                --><div class="line"></div><!--
+                --><div class="circle"><i class="fa fa-user"></i></div><!--
+                --><div class="line"></div><!--
+                --><div class="circle"><i class="fa fa-check"></i></div>
+            </div>
+
+            <div class="content_form">
+                <div class="bloc_register first">
+                    <div class="field">
+                        <label for="lastName">Votre nom</label>
+                        <input type="text" name="lastName" id="lastName" placeholder="Nom" />
+                    </div>
+
+                    <div class="field">
+                        <label for="firstName">Votre prénom</label>
+                        <input type="text" name="firstName" id="firstName" placeholder="Prénom" />
+                    </div>
+
+                    <div class="field">
+                        <label for="email">Votre email*</label>
+                        <input type="email" name="email" id="email" placeholder="Email" />
+                    </div>
+
+                    <p>Aucune de ces informations ne seront afficher sur le site.</p>
+                </div><!--
+
+                --><div class="bloc_register second">
+                    <div class="field">
+                        <label for="username">Votre nom d'utilisateur*</label>
+                        <input type="text" name="username" id="username" placeholder="Username" />
+                    </div>
+
+                    <div class="field">
+                        <label for="img">Votre profil</label>
+                        <input type="file" name="img" id="img" placeholder="Image de profile" />
+                    </div>
+                </div><!--
+
+                --><div class="bloc_register third">
+                    <div class="field">
+                        <label for="password_1">Sécurité</label>
+                        <input type="password" name="password_1" id="password_1" placeholder="Mot de passe" />
+                        <input type="password" name="password_2" id="password_2" placeholder="Confirmation du mot de passe" />
+                        <input type="submit" class="button" value="S'enregistrer" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer_form">
+                <a href="#">précédent</a>
+                <a href="#">suivant</a>
             </div>
         </form>
     </div>
