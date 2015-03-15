@@ -132,9 +132,9 @@ class Framework
 					}
 				}
 			}
+                        
                     $request->attributes->add($route);
                     $info = explode('::',$route['_controller']);
-                    
                     $controller = new $info[0]();
 			//controle du droit d'admin
 			

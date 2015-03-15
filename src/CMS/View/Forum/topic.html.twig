@@ -14,7 +14,13 @@
         
         </ul>
         <div>
-            <a>Répondre</a>
+            {% if session.hasUser() %}
+                <form action="{{urlgenerator('forum_send_message')}}" method="POST" >
+                    <input type="hidden" value="{{id_topic}}" name="id_topic" />
+                    <input type="text" name="contentMessage" id="contentMessage" ?>
+                    <input type="submit" value="Répondre" />
+                </form>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

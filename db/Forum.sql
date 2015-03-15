@@ -1,4 +1,5 @@
 
+
 --
 -- Base de données :  `octo`
 --
@@ -10,13 +11,21 @@
 --
 
 CREATE TABLE `Message` (
-  `id` int(11) NOT NULL,
+`id` int(11) NOT NULL,
   `contentMessage` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `dateMessage` datetime NOT NULL,
   `lastUpdateMessage` datetime NOT NULL,
   `id_user` int(11) NOT NULL,
   `id_topic` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+
+--
+-- Contenu de la table `Message`
+--
+
+INSERT INTO `Message` (`id`, `contentMessage`, `dateMessage`, `lastUpdateMessage`, `id_user`, `id_topic`) VALUES
+(2, 'Permier mss', '2015-03-15 00:00:00', '2015-03-15 00:00:00', 1, 1),
+(3, 'Deuxieme message', '2015-03-18 00:00:00', '2015-03-19 00:00:00', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -52,15 +61,27 @@ CREATE TABLE `Topic` (
   `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `dateTopic` datetime NOT NULL,
   `lastUpdateTopic` datetime NOT NULL,
-  `id_forum` int(11) NOT NULL,
+  `id_forum` int(11) DEFAULT NULL,
   `id_user` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
--- --------------------------------------------------------
+--
+-- Contenu de la table `Topic`
+--
+
+INSERT INTO `Topic` (`id`, `title`, `dateTopic`, `lastUpdateTopic`, `id_forum`, `id_user`) VALUES
+(1, 'Bonjour les enfants ', '2015-03-15 00:00:00', '2015-03-15 00:00:00', 3, 1),
+(2, 'Azert', '2015-03-17 00:00:00', '2015-03-17 00:00:00', NULL, 3);
 
 --
 -- Index pour les tables exportées
 --
+
+--
+-- Index pour la table `Message`
+--
+ALTER TABLE `Message`
+ ADD PRIMARY KEY (`id`), ADD KEY `id_topic` (`id_topic`), ADD KEY `id_user` (`id_user`);
 
 --
 -- Index pour la table `SubForum`
@@ -79,6 +100,11 @@ ALTER TABLE `Topic`
 --
 
 --
+-- AUTO_INCREMENT pour la table `Message`
+--
+ALTER TABLE `Message`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+--
 -- AUTO_INCREMENT pour la table `SubForum`
 --
 ALTER TABLE `SubForum`
@@ -87,10 +113,17 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 -- AUTO_INCREMENT pour la table `Topic`
 --
 ALTER TABLE `Topic`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- Contraintes pour les tables exportées
 --
+
+--
+-- Contraintes pour la table `Message`
+--
+ALTER TABLE `Message`
+ADD CONSTRAINT `message_ibfk_1` FOREIGN KEY (`id_topic`) REFERENCES `Topic` (`id`),
+ADD CONSTRAINT `message_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `User` (`id`);
 
 --
 -- Contraintes pour la table `SubForum`

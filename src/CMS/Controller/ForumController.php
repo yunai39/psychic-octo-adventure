@@ -5,7 +5,7 @@ namespace CMS\Controller;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+use CMS\Model\Message;
 
 class ForumController extends \Arch\Controller{
     public function indexAction($request){
@@ -84,7 +84,25 @@ EOF;
 
         $query = $db->prepare($sql); 
         $result = $query->execute(array('id' => $id));
-        return $this->render("Forum/topic.html.twig", array('messages' => $query->fetchAll()));
+        return $this->render("Forum/topic.html.twig", array('messages' => $query->fetchAll(), 'id_topic' => $id));
     
+    }
+    
+    
+    public function sendMessageAction($request){
+        if($request->getMethod() == 'POST') {
+            $message = new Message();
+            $date = date("Y-m-d H:i:s");  
+            
+            $message->setId_topic($request->get('id_topic'))
+                    ->setId_user($this->getUser()->getId())
+                    ->setContentMessage($request->get('contentMessage'))
+                    ->setDateMessage($date  )
+                    ->setLastUpdateMessage($date);
+            
+            $db = $this->getDatabaseManager();
+            $db->add($message);
+        }
+        return $this->redirect('topic', array('id' => $request->get('id_topic')));
     }
 }

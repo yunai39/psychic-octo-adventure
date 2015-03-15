@@ -23,8 +23,9 @@ $routes->add('user_register_post', new Routing\Route( 'CMS\\Controller\\UserCont
 
 // Forum
 $routes->add('forum', new Routing\Route( 'CMS\\Controller\\ForumController::indexAction'));
-$routes->add('sub_forum', new Routing\Route( 'CMS\\Controller\\ForumController::subForumAction', 'ROLE_USER', array('id')));
-$routes->add('topic', new Routing\Route( 'CMS\\Controller\\ForumController::displayTopicAction', 'ROLE_USER', array('id')));
+$routes->add('sub_forum', new Routing\Route( 'CMS\\Controller\\ForumController::subForumAction', 'NO_ROLE', array('id')));
+$routes->add('topic', new Routing\Route( 'CMS\\Controller\\ForumController::displayTopicAction', 'NO_ROLE', array('id')));
+$routes->add('forum_send_message', new Routing\Route( 'CMS\\Controller\\ForumController::sendMessageAction', 'ROLE_USER'));
 
 
 
