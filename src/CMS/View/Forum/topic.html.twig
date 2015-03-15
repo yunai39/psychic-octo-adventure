@@ -1,0 +1,20 @@
+{# empty Twig template #}
+{% extends 'base_forum.html.twig' %}
+
+{% block forum %}
+    <div>
+        <ul>
+        {% for message in messages %}
+            <li>
+                <p>Le {{message.dateMessage}}</p>
+                <p>{{message.contentMessage}}</p>
+                <p>Par {{message.username}}</p>
+            </li>
+        {% endfor %}
+        
+        </ul>
+        <div>
+            <a>Répondre</a>
+        </div>
+    </div>
+{% endblock %}
