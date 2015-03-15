@@ -11,9 +11,13 @@
             </li>
         {% endfor %}
         
-        
+        </ul>
+        </br>
+        <ul>
         {% for topic in topics %}
-            <li></li>
+            <li>
+                <a href="{{urlgenerator('topic', {id: topic.id})}}" >{{topic.title}}</a>
+            </li>
         {% endfor %}
         </ul>
     </div>

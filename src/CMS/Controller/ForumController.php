@@ -10,13 +10,54 @@ namespace CMS\Controller;
 class ForumController extends \Arch\Controller{
     public function indexAction($request){
         $subForums = $this->getDatabaseManager()->getFinder('CMS\Model\SubForum')->getBy(array(), ' WHERE id_parentForum IS NULL '  );
-        return $this->render('Forum/index.html.twig', array('subForums' => $subForums, 'topics' => array()));
+        $db = $this->getDatabaseManager()->getConnect();
+        $sql = <<<EOF
+            SELECT 
+                t.id as `id`, 
+                t.title as `title`, 
+                t.dateTopic as `dateTopic`, 
+                t.lastUpdateTopic as `lastUpdateTopic`, 
+                u.id as `user_id`, 
+                u.username as `username` 
+            FROM 
+                Topic t inner join User u 
+                    on u.id = t.id_user  
+            WHERE 
+                t.id_forum is NULL
+            ORDER BY t.dateTopic ASC
+EOF;
+        $query = $db->prepare($sql); 
+        $result = $query->execute();
+        $topics = $query->fetchAll();
+        return $this->render('Forum/index.html.twig', array('subForums' => $subForums, 'topics' => $topics));
     }
     
     
     public function subForumAction($request,$arg){
+        $id = $arg['id'];
+        
         $subForums = $this->getDatabaseManager()->getFinder('CMS\Model\SubForum')->getBy(array('id_parentForum' => $arg['id']));
-        return $this->render('Forum/index.html.twig', array('subForums' => $subForums, 'topics' => array()));
+        
+        $db = $this->getDatabaseManager()->getConnect();
+        $sql = <<<EOF
+            SELECT 
+                t.id as `id`, 
+                t.title as `title`, 
+                t.dateTopic as `dateTopic`, 
+                t.lastUpdateTopic as `lastUpdateTopic`, 
+                u.id as `user_id`, 
+                u.username as `username` 
+            FROM 
+                Topic t inner join User u 
+                    on u.id = t.id_user  
+            WHERE 
+                t.id_forum = :id
+            ORDER BY t.dateTopic ASC
+EOF;
+        $query = $db->prepare($sql); 
+        $result = $query->execute(array('id' => $id));
+        $topics = $query->fetchAll();
+        return $this->render('Forum/index.html.twig', array('subForums' => $subForums, 'topics' => $topics));
     }
     
     public function displayTopicAction($request,$arg){
