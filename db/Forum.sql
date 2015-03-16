@@ -61,6 +61,7 @@ CREATE TABLE `Topic` (
   `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `dateTopic` datetime NOT NULL,
   `lastUpdateTopic` datetime NOT NULL,
+  `contentMessage` text NOT NULL,
   `id_forum` int(11) DEFAULT NULL,
   `id_user` int(11) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
@@ -69,9 +70,9 @@ CREATE TABLE `Topic` (
 -- Contenu de la table `Topic`
 --
 
-INSERT INTO `Topic` (`id`, `title`, `dateTopic`, `lastUpdateTopic`, `id_forum`, `id_user`) VALUES
-(1, 'Bonjour les enfants ', '2015-03-15 00:00:00', '2015-03-15 00:00:00', 3, 1),
-(2, 'Azert', '2015-03-17 00:00:00', '2015-03-17 00:00:00', NULL, 3);
+INSERT INTO `Topic` (`id`, `title`, `dateTopic`, `lastUpdateTopic`, `contentMessage`, `id_forum`, `id_user`) VALUES
+(1, 'Bonjour les enfants ', '2015-03-15 00:00:00', '2015-03-15 00:00:00', 'On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en page elle-même. L''avantage du Lorem Ipsum sur un texte générique comme ''Du texte. Du texte. Du texte.'' est qu''il possède une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du français standard. De nombreuses suites logicielles de mise en page ou éditeurs de sites Web ont fait du Lorem Ipsum leur faux texte par défaut, et une recherche pour ''Lorem Ipsum'' vous conduira vers de nombreux sites qui n''en sont encore qu''à leur phase de construction. Plusieurs versions sont apparues avec le temps, parfois par accident, souvent intentionnellement (histoire d''y rajouter de petits clins d''oeil, voire des phrases embarassantes).\r\n ', 3, 1),
+(2, 'Azert', '2015-03-17 00:00:00', '2015-03-17 00:00:00', 'On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en page elle-même. L''avantage du Lorem Ipsum sur un texte générique comme ''Du texte. Du texte. Du texte.'' est qu''il possède une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du français standard. De nombreuses suites logicielles de mise en page ou éditeurs de sites Web ont fait du Lorem Ipsum leur faux texte par défaut, et une recherche pour ''Lorem Ipsum'' vous conduira vers de nombreux sites qui n''en sont encore qu''à leur phase de construction. Plusieurs versions sont apparues avec le temps, parfois par accident, souvent intentionnellement (histoire d''y rajouter de petits clins d''oeil, voire des phrases embarassantes).\r\n ', NULL, 3);
 
 --
 -- Index pour les tables exportées
