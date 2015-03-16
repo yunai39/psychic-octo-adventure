@@ -23,7 +23,7 @@ $routes->add('user_register_post', new Routing\Route( 'CMS\\Controller\\UserCont
 
 // Forum
 $routes->add('forum', new Routing\Route( 'CMS\\Controller\\ForumController::indexAction', 'NO_ROLE', array('id') ));
-$routes->add('topic', new Routing\Route( 'CMS\\Controller\\ForumController::displayTopicAction', 'NO_ROLE', array('id')));
+$routes->add('forum_topic', new Routing\Route( 'CMS\\Controller\\ForumController::displayTopicAction', 'NO_ROLE', array('id')));
 $routes->add('forum_new_topic', new Routing\Route( 'CMS\\Controller\\ForumController::newTopicAction', 'ROLE_USER'));
 $routes->add('forum_send_message', new Routing\Route( 'CMS\\Controller\\ForumController::sendMessageAction', 'ROLE_USER'));
 

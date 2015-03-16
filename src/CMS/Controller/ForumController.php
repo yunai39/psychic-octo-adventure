@@ -118,7 +118,7 @@ EOF;
             $db = $this->getDatabaseManager();
             $db->add($message);
         }
-        return $this->redirect('topic', array('id' => $request->get('id_topic')));
+        return $this->redirect('forum_topic', array('id' => $request->get('id_topic')));
     }
     
     public function newTopicAction($request,$arg){

@@ -18,7 +18,7 @@
         <ul>
         {% for topic in topics %}
             <li>
-                <a href="{{urlgenerator('topic', {id: topic.id})}}" >{{topic.title}}</a>
+                <a href="{{urlgenerator('forum_topic', {id: topic.id})}}" >{{topic.title}}</a>
             </li>
         {% endfor %}
         </ul>
