@@ -77,9 +77,11 @@ function create_FormManager() {
 
 			if (request.readyState === 4) {
 
-				user = request.responseText;
+				console.log(request.responseText);
 
-				return ( !user ) ? true : false;
+				/*user = request.responseText;
+
+				return ( !user ) ? true : false;*/
 			}
 		}
 
