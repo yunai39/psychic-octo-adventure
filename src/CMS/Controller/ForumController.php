@@ -6,38 +6,12 @@ namespace CMS\Controller;
  * and open the template in the editor.
  */
 use CMS\Model\Message;
+use CMS\Model\Topic;
 
 class ForumController extends \Arch\Controller{
-    public function indexAction($request){
-        $subForums = $this->getDatabaseManager()->getFinder('CMS\Model\SubForum')->getBy(array(), ' WHERE id_parentForum IS NULL '  );
-        $db = $this->getDatabaseManager()->getConnect();
-        $sql = <<<EOF
-            SELECT 
-                t.id as `id`, 
-                t.title as `title`, 
-                t.dateTopic as `dateTopic`, 
-                t.lastUpdateTopic as `lastUpdateTopic`, 
-                u.id as `user_id`, 
-                u.username as `username` 
-            FROM 
-                Topic t inner join User u 
-                    on u.id = t.id_user  
-            WHERE 
-                t.id_forum is NULL
-            ORDER BY t.dateTopic ASC
-EOF;
-        $query = $db->prepare($sql); 
-        $result = $query->execute();
-        $topics = $query->fetchAll();
-        return $this->render('Forum/index.html.twig', array('subForums' => $subForums, 'topics' => $topics));
-    }
     
-    
-    public function subForumAction($request,$arg){
+    public function indexAction($request,$arg){
         $id = $arg['id'];
-        
-        $subForums = $this->getDatabaseManager()->getFinder('CMS\Model\SubForum')->getBy(array('id_parentForum' => $arg['id']));
-        
         $db = $this->getDatabaseManager()->getConnect();
         $sql = <<<EOF
             SELECT 
@@ -50,15 +24,30 @@ EOF;
             FROM 
                 Topic t inner join User u 
                     on u.id = t.id_user  
-            WHERE 
+            WHERE
+EOF;
+        if($id == -1){
+            $sql .= <<<EOF
+                    t.id_forum is NULL
+                ORDER BY t.dateTopic ASC
+EOF;
+            $query = $db->prepare($sql); 
+            $result = $query->execute();
+            $subForums = $this->getDatabaseManager()->getFinder('CMS\Model\SubForum')->getBy(array(), ' WHERE id_parentForum IS NULL '  );
+        }else {
+            $sql .= <<<EOF
                 t.id_forum = :id
             ORDER BY t.dateTopic ASC
 EOF;
-        $query = $db->prepare($sql); 
-        $result = $query->execute(array('id' => $id));
+            $query = $db->prepare($sql); 
+            $result = $query->execute(array('id' => $id));
+            $subForums = $this->getDatabaseManager()->getFinder('CMS\Model\SubForum')->getBy(array('id_parentForum' => $id)  );
+        }
         $topics = $query->fetchAll();
-        return $this->render('Forum/index.html.twig', array('subForums' => $subForums, 'topics' => $topics));
+        return $this->render('Forum/index.html.twig', array('subForums' => $subForums,'currentForum' => $id, 'topics' => $topics));
     }
+    
+    
     
     public function displayTopicAction($request,$arg){
         // Test pour l'id 
@@ -84,7 +73,28 @@ EOF;
 
         $query = $db->prepare($sql); 
         $result = $query->execute(array('id' => $id));
-        return $this->render("Forum/topic.html.twig", array('messages' => $query->fetchAll(), 'id_topic' => $id));
+        $messages = $query->fetchAll();
+        
+        
+        $sql = <<<EOF
+            SELECT 
+                t.id as `id`, 
+                t.contentMessage as `contentMessage`, 
+                t.dateTopic as `dateMessage`, 
+                t.lastUpdateTopic as `lastUpdateMessage`, 
+                u.id as `user_id`, 
+                u.username as `username` 
+            FROM 
+                Topic t inner join User u 
+                    on u.id = t.id_user  
+            WHERE 
+                t.id= :id
+EOF;
+
+        $query = $db->prepare($sql); 
+        $result = $query->execute(array('id' => $id));
+        $topic = $query->fetch();
+        return $this->render("Forum/topic.html.twig", array('topic' => $topic,  'messages' => $messages, 'id_topic' => $id));
     
     }
     
@@ -104,5 +114,28 @@ EOF;
             $db->add($message);
         }
         return $this->redirect('topic', array('id' => $request->get('id_topic')));
+    }
+    
+    public function newTopicAction($request,$arg){
+        if($request->getMethod() == 'POST') {
+            // Test
+            $title = $request->get('title');
+            $id_forum = $request->get('id_forum');
+            $date = date("Y-m-d H:i:s");  
+            $contentMessage = $request->get('contentMessage');
+            $id_user = $this->getUser()->getId();
+            $topic = new Topic();
+            
+            $topic->setDateTopic($date)
+                  ->setId_forum($id_forum)
+                  ->setId_user($id_user)
+                  ->setTitle($title)
+                  ->setContentMessage($contentMessage)
+                  ->setLastUpdateTopic($date);
+            
+            $db->add($topic);
+        }
+        
+        return $this->redirect('sub_forum', array('id' => $arg['id_forum'] ));
     }
 }

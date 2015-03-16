@@ -3,6 +3,11 @@
 
 {% block body %}
     <div>
+        <div>
+                <p>Le {{topic.dateMessage}}</p>
+                <p>{{topic.contentMessage}}</p>
+                <p>Par {{topic.username}}</p>
+        </div>
         <ul>
         {% for message in messages %}
             <li>

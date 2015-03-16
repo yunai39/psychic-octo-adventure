@@ -14,6 +14,7 @@ class Topic extends Entity{
     protected $lastUpdateTopic;
     protected $id_forum;
     protected $id_user;
+    protected $contentMessage;
     
     public function setId($id){
         $this->id = $id;
@@ -69,6 +70,15 @@ class Topic extends Entity{
     
     public function getId_user(){
         return $this->id_user;
+    }
+    
+    public function setContentMessage($contentMessage){
+        $this->contentMessage = $contentMessage;
+        return $this;
+    }
+    
+    public function getContentMessage(){
+        return $this->contentMessage;
     }
     
     public static function getTableName() {

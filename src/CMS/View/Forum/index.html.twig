@@ -3,23 +3,34 @@
 
 {% block body %}
     <div class="forums">
-        
+        <h5>Forum</h5>
         <ul class="forums_categories_list">
             <h3>Listes des forums</h3><br>
             {% for subForum in subForums %}
                 <li class="single">
-                    <div class="categories_title"><a href="{{urlgenerator('sub_forum', {id: subForum.id})}}">{{subForum.nameForum}}</a></div>
+                    <div class="categories_title"><a href="{{urlgenerator('forum', {id: subForum.id})}}">{{subForum.nameForum}}</a></div>
                     <p>{{subForum.description}}</p>
                 </li>
             {% endfor %}
         </ul>
 
-            <ul>
-            {% for topic in topics %}
-                <li>
-                    <a href="{{urlgenerator('topic', {id: topic.id})}}" >{{topic.title}}</a>
-                </li>
-            {% endfor %}
-            </ul>
+        <h5>Topic</h5>
+        <ul>
+        {% for topic in topics %}
+            <li>
+                <a href="{{urlgenerator('topic', {id: topic.id})}}" >{{topic.title}}</a>
+            </li>
+        {% endfor %}
+        </ul>
     </div>
+    {% if session.hasUser() %}        
+        <div>
+            <h5>Nouveaux message </h5>
+            <form action="{{urlgenerator('forum_send_message', {id: currentForum})}}" method="POST">
+                <input type="text" name="title" id="title" /></br>
+                 <textarea name="contentMessage" id="contentMessage" ></textarea></br>
+                 <input type="submit" value="Envoyer" />
+            </form>
+        </div>
+    {% endif %}
 {% endblock %}
