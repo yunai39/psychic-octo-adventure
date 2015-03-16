@@ -145,8 +145,11 @@ class Framework
                     return new Response($controller->$info[1]($request,$route['arg']));
         } 
         catch (\Exception $e) {
-        	$template = $this->twig->loadTemplate('Error.html.twig');
-                return new Response($template->display(array('error' => $e )));
+            if($request->isXmlHttpRequest()){
+                return new \Symfony\Component\HttpFoundation\JsonResponse(array('response' => false ,'error' => $e ));
+            }
+            $template = $this->twig->loadTemplate('Error.html.twig');
+            return new Response($template->display(array('error' => $e )));
         }
     }
   
