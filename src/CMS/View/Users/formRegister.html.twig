@@ -13,14 +13,14 @@
         <form action="{{urlgenerator('user_register_post')}}" method="POST" enctype="multipart/form-data" >
 
             <div class="step">
-                <div class="circle"><i class="fa fa-unlock-alt"></i></div><!--
+                <div class="circle transition"><i class="fa fa-unlock-alt"></i></div><!--
                 --><div class="line"></div><!--
-                --><div class="circle"><i class="fa fa-user"></i></div><!--
+                --><div class="circle transition"><i class="fa fa-user"></i></div><!--
                 --><div class="line"></div><!--
-                --><div class="circle"><i class="fa fa-check"></i></div>
+                --><div class="circle transition"><i class="fa fa-check"></i></div>
             </div>
 
-            <div class="content_form">
+            <div class="content_form transition">
                 <div class="bloc_register first">
                     <div class="field">
                         <label for="lastName">Votre nom</label>
@@ -50,23 +50,28 @@
                         <label for="img">Votre profil</label>
                         <input type="file" name="img" id="img" placeholder="Image de profile" />
                     </div>
-                </div><!--
 
-                --><div class="bloc_register third">
                     <div class="field">
                         <label for="password_1">Sécurité</label>
                         <input type="password" name="password_1" id="password_1" placeholder="Mot de passe" />
                         <input type="password" name="password_2" id="password_2" placeholder="Confirmation du mot de passe" />
-                        <input type="submit" class="button" value="S'enregistrer" />
                     </div>
+                </div><!--
+
+                --><div class="bloc_register third">
+                    <p>Ici on pourrais afficher toutes les infos que l'user a saisie, on verra.</p>
+                    <input type="submit" class="button" value="S'enregistrer" />
                 </div>
             </div>
 
             <div class="footer_form">
-                <a href="#">précédent</a>
+                <a href="#" class="previous">précédent</a>
                 <a href="#">suivant</a>
             </div>
         </form>
+
+        <script src="Scripts/register.js"></script>
+
     </div>
 
 {% endblock %}
