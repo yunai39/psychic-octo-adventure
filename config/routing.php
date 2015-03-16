@@ -20,6 +20,7 @@ $routes->add('user_profil_current', new Routing\Route(  'CMS\\Controller\\UserCo
 $routes->add('user_profil', new Routing\Route(  'CMS\\Controller\\UserController::infoUserAction','ROLE_USER', array('id')));
 $routes->add('user_register', new Routing\Route( 'CMS\\Controller\\UserController::registerDisplayFormAction'));
 $routes->add('user_register_post', new Routing\Route( 'CMS\\Controller\\UserController::registerDisplayFormPostAction'));
+$routes->add('user_username_available', new Routing\Route( 'CMS\\Controller\\UserController::isUsernameAvailableAction'));
 
 // Forum
 $routes->add('forum', new Routing\Route( 'CMS\\Controller\\ForumController::indexAction', 'NO_ROLE', array('id') ));

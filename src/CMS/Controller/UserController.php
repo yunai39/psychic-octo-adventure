@@ -34,6 +34,22 @@ class UserController extends \Arch\Controller {
         return $this->render('Users/formRegister.html.twig');
     }
     
+    public function isUsernameAvailableAction($request){
+        if($request->getMethod() == 'POST' && $request->isXmlHttpRequest()){
+            $username = $request->get('username');
+            if(!$username){
+                return new \Symfony\Component\HttpFoundation\JsonResponse('false');
+            }
+            
+            $result = $this->getDatabaseManager()->getFinder('CMS\Model\User')->getBy(array('username' => $username));
+            if($result){
+                return new \Symfony\Component\HttpFoundation\JsonResponse('false');
+            }else{
+                return new \Symfony\Component\HttpFoundation\JsonResponse('true');
+            }
+        }
+        
+    }
     
     public function registerDisplayFormPostAction(Request $request){
         // Control on data from the User
