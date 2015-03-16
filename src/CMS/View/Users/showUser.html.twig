@@ -1,14 +1,19 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_client.html.twig' %}
+
 {% block body %}
-    <div>
-        <img src="{{user.getWebPathImg()}}"/>
-    </div>
-    <div>
-        
-    </div>
+
+	<div class="profil_user">
+		<header class="profil_user_header">
+			<img src="{{user.getWebPathImg()}}" alt="" />
+		</header>
+		{{user.username}}<br>
+		{{user.firstname}}<br>
+		{{user.lastname}}<br>
+		{{user.id}}
+	</div>
 
 {% endblock %}
+
 {% block scripts %}
-		
 
 {% endblock %}

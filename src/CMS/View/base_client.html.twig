@@ -1,0 +1,34 @@
+{% include 'Partials/header.html.twig' %}
+		
+		<div class="client">
+			
+			<header class="client_header">
+				<nav>
+					<ul class="row">
+						<li><i class="fa fa-skyatlas"></i> Psychic Octo</li>
+						<li>Accueil</li>
+						<li>Membres</li>
+						<li><a href="{{urlgenerator('login')}}">Login</a></li>
+					</ul>
+				</nav>
+			</header>
+
+			<div class="content">
+				
+				<div class="ariane">
+	            	Accueil > Membres > Admin
+	            </div>
+
+		        {% block body %}
+		        {% endblock %}
+
+		        <footer>
+					© Psychic Octo 2015
+				</footer>
+
+			</div>
+			
+        </div>
+		{% block scripts %}
+	    {% endblock %}
+{% include 'Partials/footer.html.twig' %}
