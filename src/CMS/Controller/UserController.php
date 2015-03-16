@@ -97,8 +97,17 @@ class UserController extends \Arch\Controller {
             
             /** @var $db Arch\Connect\DatabaseManager */
             $db = $this->getDatabaseManager();
-            $userCheck = $db->getFinder('CMS\Model\User')->getBy(array('username' => $request->get('username'), ' or email = "'.$request->get('email').'"'));
-            if($userCheck){
+            $sql = <<<EOF
+                    SELECT *
+                    FROM User
+                    WHERE
+                     username = :username
+                    or email = :email
+EOF;
+           
+            $query = $db->getConnect()->prepare($sql);
+            $userCheck = $query->execute(array('email' => $request->get('email'),'username' => $request->get('username')));
+            if( count($query->fetchAll()) != 0 ){
                 $this->session->getFlashBag()->add('error_register','Username déjà utilisé');
                 $control = false;
             }

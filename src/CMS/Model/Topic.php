@@ -44,7 +44,7 @@ class Topic extends Entity{
         return $this->dateTopic;
     }
     
-    public function setLastUpdateTopic($dateTopic){
+    public function setLastUpdateTopic($lastUpdateTopic){
         $this->lastUpdateTopic = $lastUpdateTopic;
         return $this;
     }

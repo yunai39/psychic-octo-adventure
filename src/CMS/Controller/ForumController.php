@@ -12,6 +12,9 @@ class ForumController extends \Arch\Controller{
     
     public function indexAction($request,$arg){
         $id = $arg['id'];
+        if($id == NULL){
+            $id = -1;
+        }
         $db = $this->getDatabaseManager()->getConnect();
         $sql = <<<EOF
             SELECT 
@@ -101,6 +104,8 @@ EOF;
     
     public function sendMessageAction($request){
         if($request->getMethod() == 'POST') {
+            // Test
+            /** TODO */
             $message = new Message();
             $date = date("Y-m-d H:i:s");  
             
@@ -119,6 +124,9 @@ EOF;
     public function newTopicAction($request,$arg){
         if($request->getMethod() == 'POST') {
             // Test
+            /** TODO */
+            
+            $db = $this->getDatabaseManager();
             $title = $request->get('title');
             $id_forum = $request->get('id_forum');
             $date = date("Y-m-d H:i:s");  
@@ -136,6 +144,6 @@ EOF;
             $db->add($topic);
         }
         
-        return $this->redirect('sub_forum', array('id' => $arg['id_forum'] ));
+        return $this->redirect('forum', array('id' => $request->get('id_forum') ));
     }
 }

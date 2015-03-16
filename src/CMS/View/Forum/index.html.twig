@@ -26,7 +26,7 @@
     {% if session.hasUser() %}        
         <div>
             <h5>Nouveaux message </h5>
-            <form action="{{urlgenerator('forum_send_message', {id: currentForum})}}" method="POST">
+            <form action="{{urlgenerator('forum_new_topic', {id: currentForum})}}" method="POST">
                 <input type="text" name="title" id="title" /></br>
                  <textarea name="contentMessage" id="contentMessage" ></textarea></br>
                  <input type="submit" value="Envoyer" />
