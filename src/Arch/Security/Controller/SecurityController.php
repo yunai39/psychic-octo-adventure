@@ -31,7 +31,7 @@ class SecurityController extends Controller{
                             
 				$this->session->getFlashBag()->add('login_error',$e->getMessage());
                                 if($request->isXmlHttpRequest()){
-                                    return JsonResponse('false');
+                                    return JsonResponse(array('response' => false ,'error' => $e->getMessage()));
                                 }
                                 return $this->redirect('login');
 			}
