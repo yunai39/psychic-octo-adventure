@@ -1,24 +1,25 @@
 {# empty Twig template #}
-{% extends 'base_forum.html.twig' %}
+{% extends 'base_client.html.twig' %}
 
-{% block forum %}
-    <div>
-        <ul>
-        {% for subForum in subForums %}
-            <li>
-                <a href="{{urlgenerator('sub_forum', {id: subForum.id})}}">{{subForum.nameForum}}</a>
-                <p>{{subForum.description}}</p>
-            </li>
-        {% endfor %}
+{% block body %}
+    <div class="forums">
         
+        <ul class="forums_categories_list">
+            <h3>Listes des forums</h3><br>
+            {% for subForum in subForums %}
+                <li class="single">
+                    <div class="categories_title"><a href="{{urlgenerator('sub_forum', {id: subForum.id})}}">{{subForum.nameForum}}</a></div>
+                    <p>{{subForum.description}}</p>
+                </li>
+            {% endfor %}
         </ul>
-        </br>
-        <ul>
-        {% for topic in topics %}
-            <li>
-                <a href="{{urlgenerator('topic', {id: topic.id})}}" >{{topic.title}}</a>
-            </li>
-        {% endfor %}
-        </ul>
+
+            <ul>
+            {% for topic in topics %}
+                <li>
+                    <a href="{{urlgenerator('topic', {id: topic.id})}}" >{{topic.title}}</a>
+                </li>
+            {% endfor %}
+            </ul>
     </div>
 {% endblock %}

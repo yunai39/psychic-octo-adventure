@@ -8,14 +8,10 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 @grey: rgb(245, 245, 245);
 @red: #EE3939;
 
-// IMPORT OTHER LESS CSS
-@import "mobiles";
-@import "tablet";
-@import "screen";
-
 /*
 	INIT
 */
+
 body{
 	font-family: 'Lato', sans-serif;
 	font-size: 13px;
@@ -50,218 +46,9 @@ body{
 }
 
 /*
-	NAVIGATION
-*/
-
-/*
-	CONTENT
-*/
-
-.client{
-	header.client_header{
-		nav{
-			background:rgb(100,100,100);
-			border: 2px solid rgba(0,0,0,0.1);
-			padding: 15px 5px;
-			color: #FFF;
-			ul{
-				list-style-type: none;
-				display: block;
-				li{
-					float:left;
-					font-size: 15px;
-					font-weight: 300;
-					margin-right: 50px;
-					a{
-						color: #FFF;
-						text-decoration: none;
-					}
-				}
-			}
-		}
-	}
-	.content{
-		background:#FFF;
-	}
-	.ariane{
-		padding: 10px 20px;
-		color: rgba(0,0,0,0.7);
-	}
-	footer{
-		position:relative;
-		bottom:0;
-		color:rgba(0,0,0,0.3);
-		padding: 10px;
-		text-align:center;
-	}
-
-	.profil_user{
-		header.profil_user_header{
-			background:rgb(200, 200, 200);
-			height:150px;
-		}
-	}
-}
-
-.signup:extend(.box){
-	max-width: 400px;
-	height: 450px;
-	margin: 0 auto;
-
-	h1:extend(.title){
-		background: @bleu;
-		color: #FFF;
-		font-weight: 600;
-		font-size: 13px;
-		padding: 15px 20px;
-		margin: 20px -20px;
-		margin-top: -20px;
-		border-radius: 3px 3px 0 0;
-		text-transform: uppercase;
-		border-bottom: 2px solid rgba(0,0,0,0.1);
-	}
-
-	form{
-		overflow: hidden;
-		width: 400px;
-		height: 405px;
-
-		.step{
-			width: 350px;
-			margin: auto;
-			margin-bottom: 20px;
-
-			.circle{
-			    width: 50px;
-			    height: 50px;
-			    border-radius: 50px;
-			    background: gainsboro;
-			    display: inline-block;
-			    vertical-align: top;
-			    text-align: center;
-
-			    i{
-			    	color: white;
-			    	font-size: 25px;
-			    	line-height: 50px;
-			    }
-
-			    &:nth-child(1){
-			    	background: #2895f1;
-			    }
-			}
-
-			.line{
-			    width: 100px;
-			    height: 2px;
-			    margin-top: 24px;
-			    background: gainsboro;
-			    display: inline-block;
-			}
-		}
-
-		.content_form{
-			width: 1200px;
-
-			.bloc_register{
-				width: 400px;
-				height: 300px;
-				display: inline-block;
-				vertical-align: top;
-			}
-
-			.first p{
-				color: @red;
-			}
-		}
-
-		.footer_form{
-			width: 100%;
-			height: 35px;
-
-			a:nth-child(1){
-				float: left;
-			}
-
-			a:nth-child(2){
-				float: right;
-			}
-		}
-	}
-
-	input{
-		width:convert(100%, px) - 8px;
-		&.button{
-			width: auto;
-			float: right;
-		}
-	}
-}
-.signin{
-	margin-top: 10%;
-	.logo{
-		max-width: 300px;
-		margin: 0 auto;
-		text-align: center;
-		font-size: 80px;
-		margin-bottom:30px;
-		color:@bleu;
-		text-shadow: 2px 1px 5px rgba(0,0,0,0.1);
-	}
-	.login:extend(.box){
-		max-width: 300px;
-		margin: 0 auto;
-		h1:extend(.title){
-			background: @bleu;
-			color: #FFF;
-			font-weight: 600;
-			font-size: 13px;
-			padding: 15px 20px;
-			margin: 20px -20px;
-			margin-top: -20px;
-			border-radius: 3px 3px 0 0;
-			text-transform: uppercase;
-			border-bottom: 2px solid rgba(0,0,0,0.1);
-		}
-		input{
-			width:convert(100%, px) - 11px;
-			&.button{
-				width: auto;
-				float: right;
-			}
-		}
-		label{
-			.error{
-				
-			}
-		}
-		.forget{
-			padding-top: 15px;
-			float: left;
-		}
-		.login_error{
-			position:absolute;
-			top: 0;
-			right: 0;
-			left: 0;
-			background:@red;
-			color:#FFF;
-			padding:20px 15px;
-			margin-bottom: 20px;
-			text-align: center;
-			text-transform: uppercase;
-		}
-	}
-	.nologin{
-		margin:15px auto;
-		max-width: 300px;
-		text-align: right;
-		color:rgba(0, 0, 0, 0.2)
-	}
-}
-/*
 	COMPONENTS
 */
+
 .content{
 	max-width: 1000px;
 	margin: 0 auto;
@@ -358,3 +145,10 @@ input{
 		}
 	}
 }
+
+// IMPORT OTHER LESS CSS
+
+@import "default";
+@import "mobiles";
+@import "tablet";
+@import "screen";
