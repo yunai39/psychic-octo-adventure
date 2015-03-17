@@ -40,7 +40,7 @@
 			}
 		}
 
-		
+		/*
 		errorText = formContent.username.elem.nextElementSibling;
 
 		if ( formManager.checkAccount(formContent.username.elem, formContent.password.elem, 'index.php?page=log_check') ) {
@@ -59,6 +59,7 @@
 				this_.submit();
 			}
 		}
+		*/
 		
 	}, false);
 
