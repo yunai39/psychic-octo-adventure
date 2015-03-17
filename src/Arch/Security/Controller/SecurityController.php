@@ -28,11 +28,12 @@ class SecurityController extends Controller{
                                 }
                                 return $this->redirect('home');
 			}catch(\Exception $e){
+                            
 				$this->session->getFlashBag()->add('login_error',$e->getMessage());
-                                return $this->redirect('login');
                                 if($request->isXmlHttpRequest()){
                                     return JsonResponse('false');
                                 }
+                                return $this->redirect('login');
 			}
 		}
 	}

@@ -112,7 +112,7 @@ class Controller{
         {
     	//$parameters = $this->decode($parameters);
 		$template = $this->twig->loadTemplate($view);
-		return $template->display($parameters);
+		return new \Symfony\Component\HttpFoundation\Response($template->display($parameters));
         }
 	
 	/**

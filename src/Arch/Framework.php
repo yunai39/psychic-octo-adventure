@@ -142,9 +142,10 @@ class Framework
                     $controller->seturlGenerator($this->generator);
                     $controller->setSession($this->session);
                     $controller->setConfiguration($this->configuration);
-                    return new Response($controller->$info[1]($request,$route['arg']));
+                    return $controller->$info[1]($request,$route['arg']);
         } 
         catch (\Exception $e) {
+            var_dump($request->isXmlHttpRequest());
             if($request->isXmlHttpRequest()){
                 return new \Symfony\Component\HttpFoundation\JsonResponse(array('response' => false ,'error' => $e ));
             }
