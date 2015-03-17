@@ -10,31 +10,34 @@
                 {% endfor %}
             </ul>
         {% endif %}
-        <form action="{{urlgenerator('user_register_post')}}" method="POST" enctype="multipart/form-data" >
+        <div class="step">
+            <div class="circle transition"><i class="fa fa-unlock-alt"></i></div><!--
+            --><div class="line"></div><!--
+            --><div class="circle transition"><i class="fa fa-user"></i></div><!--
+            --><div class="line"></div><!--
+            --><div class="circle transition"><i class="fa fa-check"></i></div>
+        </div>
 
-            <div class="step">
-                <div class="circle transition"><i class="fa fa-unlock-alt"></i></div><!--
-                --><div class="line"></div><!--
-                --><div class="circle transition"><i class="fa fa-user"></i></div><!--
-                --><div class="line"></div><!--
-                --><div class="circle transition"><i class="fa fa-check"></i></div>
-            </div>
+        <form action="{{urlgenerator('user_register_post')}}" method="POST" enctype="multipart/form-data" >
 
             <div class="content_form transition">
                 <div class="bloc_register first">
                     <div class="field">
                         <label for="lastName">Votre nom</label>
                         <input type="text" name="lastName" id="lastName" placeholder="Nom" />
+                        <div class="error"></div>
                     </div>
 
                     <div class="field">
                         <label for="firstName">Votre prénom</label>
                         <input type="text" name="firstName" id="firstName" placeholder="Prénom" />
+                        <div class="error"></div>
                     </div>
 
                     <div class="field">
                         <label for="email">Votre email*</label>
                         <input type="email" name="email" id="email" placeholder="Email" />
+                        <div class="error"></div>
                     </div>
 
                     <p>Aucune de ces informations ne seront afficher sur le site.</p>
@@ -44,17 +47,21 @@
                     <div class="field">
                         <label for="username">Votre nom d'utilisateur*</label>
                         <input type="text" name="username" id="username" placeholder="Username" />
+                        <div class="error"></div>
                     </div>
 
                     <div class="field">
                         <label for="img">Votre profil</label>
                         <input type="file" name="img" id="img" placeholder="Image de profile" />
+                        <div class="error"></div>
                     </div>
 
                     <div class="field">
                         <label for="password_1">Sécurité</label>
                         <input type="password" name="password_1" id="password_1" placeholder="Mot de passe" />
+                        <div class="error"></div>
                         <input type="password" name="password_2" id="password_2" placeholder="Confirmation du mot de passe" />
+                        <div class="error"></div>
                     </div>
                 </div><!--
 
@@ -63,13 +70,14 @@
                     <input type="submit" class="button" value="S'enregistrer" />
                 </div>
             </div>
-
-            <div class="footer_form">
-                <a href="#" class="previous">précédent</a>
-                <a href="#">suivant</a>
-            </div>
         </form>
 
+        <div class="row">
+            <a href="#" class="previous">précédent</a>
+            <a href="#" class="next">suivant</a>
+        </div>
+
+        <script src="Scripts/formManager.js"></script>
         <script src="Scripts/register.js"></script>
 
     </div>
