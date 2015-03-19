@@ -15,16 +15,26 @@
 			</header>
 
 			<div class="content">
-
+				
 				{% block header %}
 	    		{% endblock %}
 				
 				<div class="ariane">
 	            	Accueil > Membres > Admin
 	            </div>
+				
+				<div class="row">
 
-		        {% block body %}
-		        {% endblock %}
+			        {% block body %}
+			        {% endblock %}
+
+			        {% block sidebar %}
+						<div class="sidebar">
+							sidebar
+						</div>
+		    		{% endblock %}
+
+	    		</div>
 
 		        <footer>
 					© Psychic Octo 2015
