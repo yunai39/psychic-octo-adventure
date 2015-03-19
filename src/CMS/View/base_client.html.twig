@@ -6,14 +6,18 @@
 				<nav>
 					<ul class="row">
 						<li><i class="fa fa-skyatlas"></i> Psychic Octo</li>
-						<li>Accueil</li>
-						<li>Membres</li>
+						<li><a href="{{urlgenerator('')}}">Accueil</a></li>
+						<li><a href="{{urlgenerator('forum')}}">Forums</a></li>
+						<li><a href="{{urlgenerator('user_register')}}">Membres</a></li>
 						<li><a href="{{urlgenerator('login')}}">Login</a></li>
 					</ul>
 				</nav>
 			</header>
 
 			<div class="content">
+
+				{% block header %}
+	    		{% endblock %}
 				
 				<div class="ariane">
 	            	Accueil > Membres > Admin

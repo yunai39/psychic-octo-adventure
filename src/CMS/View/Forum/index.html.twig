@@ -3,9 +3,10 @@
 
 {% block body %}
     <div class="forums">
-        <h5>Forum</h5>
+
+        <h2 class="title">{Forum}</h2>
+
         <ul class="forums_categories_list">
-            <h3>Listes des forums</h3><br>
             {% for subForum in subForums %}
                 <li class="single">
                     <div class="categories_title"><a href="{{urlgenerator('forum', {id: subForum.id})}}">{{subForum.nameForum}}</a></div>
@@ -14,7 +15,8 @@
             {% endfor %}
         </ul>
 
-        <h5>Topic</h5><br><br><br><br><br>
+        <h2 class="title">{Forum} / Topics <span class="label">42</span></h2>
+
         <table class="topicgrid" id="gride">
             <thead>
                 <tr>
@@ -43,9 +45,19 @@
                 {% endfor %}
             </tbody>
         </table>
-    </div>
 
-    <br><br><br><br>
+        {% if session.hasUser() %}
+
+            <h2 class="title">Nouveau topic sur {Forum}</h2>
+                <form action="{{urlgenerator('forum_new_topic', {id: currentForum})}}" method="POST">
+                    <input type="text" name="title" id="title" /></br>
+                     <textarea name="contentMessage" id="contentMessage" ></textarea></br>
+                     <input type="submit" value="Envoyer" />
+                </form>
+
+        {% endif %}
+
+    </div>
 
     <script>
         var arrayLignes = document.getElementById("gride").rows; //l'array est stocké dans une variable
@@ -66,14 +78,4 @@
         }
     </script>
 
-    {% if session.hasUser() %}        
-        <div>
-            <h5>Nouveau Topic</h5>
-            <form action="{{urlgenerator('forum_new_topic', {id: currentForum})}}" method="POST">
-                <input type="text" name="title" id="title" /></br>
-                 <textarea name="contentMessage" id="contentMessage" ></textarea></br>
-                 <input type="submit" value="Envoyer" />
-            </form>
-        </div>
-    {% endif %}
 {% endblock %}
