@@ -14,18 +14,61 @@
             {% endfor %}
         </ul>
 
-        <h5>Topic</h5>
-        <ul>
-        {% for topic in topics %}
-            <li>
-                <a href="{{urlgenerator('forum_topic', {id: topic.id})}}" >{{topic.title}}</a>
-            </li>
-        {% endfor %}
-        </ul>
+        <h5>Topic</h5><br><br><br><br><br>
+        <table class="topicgrid" id="gride">
+            <thead>
+                <tr>
+                    <th><i class="fa fa-bars"></i> Sujets</th>
+                    <th class="cellcenter"><i class="fa fa-comments"></i></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for topic in topics %}
+                <tr>
+                    
+                    <td>
+                        <a class="topiclink" href="{{urlgenerator('forum_topic', {id: topic.id})}}" >{{topic.title}}</a><br> 
+                        <div class="author">Posté le 10 mars par <a class="authorlink" href="{{urlgenerator('user_profil', {id: topic.id_user})}}">{{topic.username}}</a></div>
+                    </td>
+                    <td class="cellcenter comments">
+                        <br>
+                        <div class="middle">36</div>
+                    </td>
+                    <td class="cellcenter">
+                        <br>
+                        <div class="middle open"><i class="fa fa-check"></i></div> {# .resolved #}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
+
+    <br><br><br><br>
+
+    <script>
+        var arrayLignes = document.getElementById("gride").rows; //l'array est stocké dans une variable
+        var longueur = arrayLignes.length;//on peut donc appliquer la propriété length
+        var i=0; //on définit un incrémenteur qui représentera la clé
+
+        while(i<longueur)
+        {
+            if(i % 2 == 0)//si la clé est paire
+            {
+                arrayLignes[i].style.backgroundColor = "#FFF";
+            }
+            else //elle est impaire
+            {
+                arrayLignes[i].style.backgroundColor = "#F6F6F6";
+            }
+            i++;
+        }
+    </script>
+
     {% if session.hasUser() %}        
         <div>
-            <h5>Nouveau Topic </h5>
+            <h5>Nouveau Topic</h5>
             <form action="{{urlgenerator('forum_new_topic', {id: currentForum})}}" method="POST">
                 <input type="text" name="title" id="title" /></br>
                  <textarea name="contentMessage" id="contentMessage" ></textarea></br>
